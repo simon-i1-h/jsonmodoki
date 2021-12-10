@@ -1,0 +1,7 @@
+# for clangd
+/.cache
+/compile_commands.json
+
+*.o
+*.d
+x
