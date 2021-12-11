@@ -2,6 +2,11 @@
 /.cache
 /compile_commands.json
 
+# for coverage
+*.gcno
+*.gcda
+*.c.gcov
+
 *.o
 *.d
 x
