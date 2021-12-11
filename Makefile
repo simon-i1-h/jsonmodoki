@@ -10,7 +10,7 @@ DEPS = $(OBJS:.o=.d)
 GCNO = $(SRCS:.c=.gcno)
 GCDA = $(SRCS:.c=.gcda)
 GCOV = $(SRCS:.c=.c.gcov)
-LDFLAGS =
+LDFLAGS = -fuse-ld=lld
 
 all: $(PROG)
 
