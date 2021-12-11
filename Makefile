@@ -1,4 +1,4 @@
-.PHONY: all test clean coverage
+.PHONY: all test clean coverage bear
 
 CC = clang
 CFLAGS = -Wall -Wextra -Og -g3 -std=c11 -pedantic -Wimplicit-fallthrough
@@ -19,6 +19,9 @@ coverage: all
 	./$(PROG)
 	for gcda in $(GCDA); do llvm-cov gcov $$gcda; done
 
+bear: clean
+	bear -- $(MAKE) all
+
 $(PROG): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
@@ -26,7 +29,8 @@ $(PROG): $(OBJS)
 	$(CC) $(CFLAGS) -MMD -MP -c -o $@ $<
 
 clean:
-	rm -f $(PROG) $(OBJS) $(DEPS) $(GCNO) $(GCDA) $(GCOV)
+	rm -f $(PROG) $(OBJS) $(DEPS) $(GCNO) $(GCDA) $(GCOV) \
+		compile_commands.json
 
 test: all
 	./$(PROG)
